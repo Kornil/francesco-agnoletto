@@ -38,3 +38,9 @@ jobs:
         run: |
           aws s3 sync dist/ s3://francesco-agnoletto-frontend.com-168992393550-us-east-1-an \
             --delete
+
+      - name: Invalidate CloudFront cache for index.html
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E183VIHR915PJ2 \
+            --paths "/" "/index.html"
