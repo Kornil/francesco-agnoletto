@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Capture start time
         id: start_time
-        run: echo "start_time=$(date +%s")" >> $GITHUB_OUTPUT
+        run: echo "start_time=$(date +%s)" >> $GITHUB_OUTPUT
 
       - name: Checkout repo
         uses: actions/checkout@v6
@@ -34,8 +34,9 @@ jobs:
 
       - name: Generate deployment report
         run: |
+          START_TIME=${{ steps.start_time.outputs.start_time }}
           END_TIME=$(date +%s)
-          DURATION=$((END_TIME - $START_TIME))
+          DURATION=$((END_TIME - START_TIME))
 
           cat > dist/stats.json <<EOF
           {
