@@ -1,4 +1,4 @@
-import "./style.css";
+import "./styles/style.css";
 
 import { getState, dispatch, subscribe, actions } from "./store";
 

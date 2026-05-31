@@ -52,11 +52,11 @@
 
 body {
   margin: 0;
+  font-family: var(--mono);
 }
 
 h1,
 h2 {
-  font-family: var(--heading);
   font-weight: 500;
   color: var(--text-h);
 }
@@ -160,12 +160,27 @@ code {
   width: 1126px;
   max-width: 100%;
   margin: 0 auto;
-  text-align: center;
   border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+
+  display: grid;
+  grid-template-areas:
+    "hero hero hero"
+    "center-left center center-right"
+    "footer footer footer-deploy-stats";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+
+  hello-world {
+    grid-area: center;
+  }
+
+  deploy-stats {
+    grid-area: footer-deploy-stats;
+  }
 }
 
 #center {

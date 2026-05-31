@@ -1,3 +1,5 @@
+import "../styles/deploy-stats.css";
+
 class DeployStats extends HTMLElement {
   unsubscribe?: () => void;
   loading = true;
@@ -45,12 +47,12 @@ class DeployStats extends HTMLElement {
 
   private renderContent() {
     if (this.error) {
-      this.innerHTML = `<p>${this.error}</p>`;
+      this.renderWrapper(`<li>${this.error}</li>`);
       return;
     }
 
     if (this.loading) {
-      this.innerHTML = `<p>loading deployments…</p>`;
+      this.renderWrapper(`<li>loading...</li>`);
       return;
     }
 
@@ -58,16 +60,24 @@ class DeployStats extends HTMLElement {
     const stats = appStore?.getState().deploy;
 
     if (!stats) {
-      this.innerHTML = `<p>no data.</p>`;
+      this.renderWrapper(`<li>no data.</li>`);
       return;
     }
 
+    this.renderWrapper(`
+      <li>deploy #${stats.runNumber}</li>
+      <li>${new Date(stats.deployedAt).toLocaleString()}</li>
+      <li>completed in ${stats.durationSeconds}s</li>
+    `);
+  }
+
+  private renderWrapper(content: string) {
     this.innerHTML = `
-      <ul>
-        <li>deploy #${stats.runNumber}</li>
-        <li>${new Date(stats.deployedAt).toLocaleString()}</li>
-        <li>completed in ${stats.durationSeconds}s</li>
-      </ul>
+      <div class="deploy-stats-wrapper">
+        <ul>
+          ${content}
+        </ul>
+      </div>
     `;
   }
 
