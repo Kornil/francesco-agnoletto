@@ -14,6 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Capture start time
+        id: start_time
+        run: echo "start_time=$(date +%s")" >> $GITHUB_OUTPUT
+
       - name: Checkout repo
         uses: actions/checkout@v6
 
@@ -27,6 +31,19 @@ jobs:
 
       - name: Build project
         run: npm run build
+
+      - name: Generate deployment report
+        run: |
+          END_TIME=$(date +%s)
+          DURATION=$((END_TIME - $START_TIME))
+
+          cat > dist/stats.json <<EOF
+          {
+            "runNumber": "${{ github.run_number }}",
+            "deployedAt": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+            "durationSeconds": $DURATION
+          }
+          EOF
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
