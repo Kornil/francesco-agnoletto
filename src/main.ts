@@ -1,6 +1,23 @@
 import "./style.css";
 
-import "./web-components";
+import { getState, dispatch, subscribe, actions } from "./store";
+
+declare global {
+  interface Window {
+    appStore: {
+      getState: typeof getState;
+      dispatch: typeof dispatch;
+      subscribe: typeof subscribe;
+      actions: typeof actions;
+    };
+  }
+}
+
+window.appStore = { getState, dispatch, subscribe, actions };
+
+// Dynamically import web components after store is available
+import("./web-components");
+
 /* 
 import typescriptLogo from './assets/typescript.svg'
 import viteLogo from './assets/vite.svg'
@@ -62,5 +79,3 @@ f
 
 setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
  */
-
-// web component
