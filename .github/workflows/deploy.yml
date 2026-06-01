@@ -44,7 +44,7 @@ jobs:
           cat > dist/stats.json <<EOF
           {
             "runNumber": "${{ github.run_number }}",
-            "deployedAt": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+            "commit": "${{ github.sha }}",
             "durationSeconds": $DURATION
           }
           EOF

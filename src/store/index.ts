@@ -6,7 +6,7 @@ import type { Store, StoreAction } from "./types";
 let state: Store = {
   deploy: {
     runNumber: 0,
-    deployedAt: "",
+    commit: "",
     durationSeconds: 0,
   },
 };

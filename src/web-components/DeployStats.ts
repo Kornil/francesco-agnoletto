@@ -31,7 +31,7 @@ class DeployStats extends HTMLElement {
       const stats = appStore.getState().deploy;
 
       // Check if we have valid data
-      if (stats && stats.deployedAt) {
+      if (stats && stats.commit) {
         this.loading = false;
         this.error = null;
       } else {
@@ -66,8 +66,10 @@ class DeployStats extends HTMLElement {
 
     this.renderWrapper(`
       <li>deploy #${stats.runNumber}</li>
-      <li>${new Date(stats.deployedAt).toLocaleString()}</li>
       <li>completed in ${stats.durationSeconds}s</li>
+      <li>
+        <a href="https://github.com/Kornil/francesco-agnoletto/commit/${stats.commit}" target="_blank">${stats.commit.slice(0, 7)}</a>
+      </li>
     `);
   }
 

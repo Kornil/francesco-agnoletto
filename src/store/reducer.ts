@@ -7,7 +7,7 @@ export const reducer = (state: Store, action: StoreAction): Store => {
         ...state,
         deploy: {
           runNumber: action.payload.runNumber,
-          deployedAt: action.payload.deployedAt,
+          commit: action.payload.commit,
           durationSeconds: action.payload.durationSeconds,
         },
       };

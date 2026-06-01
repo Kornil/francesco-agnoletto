@@ -4,7 +4,7 @@ export const ActionTypes = {
 
 export interface DeployStats {
   runNumber: number;
-  deployedAt: string;
+  commit: string;
   durationSeconds: number;
 }
 
