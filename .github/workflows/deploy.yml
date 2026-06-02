@@ -41,7 +41,7 @@ jobs:
           END_TIME=$(date +%s)
           DURATION=$((END_TIME - START_TIME))
 
-          cat > dist/stats.json <<EOF
+          cat > dist/data/deploy-stats.json <<EOF
           {
             "runNumber": "${{ github.run_number }}",
             "commit": "${{ github.sha }}",
@@ -58,10 +58,13 @@ jobs:
       - name: Deploy to S3
         run: |
           aws s3 sync dist/ s3://francesco-agnoletto-frontend.com-168992393550-us-east-1-an \
-            --delete
+            --delete \
+            -- exclude "data/*"
+
+          aws s3 cp dist/data/deploy-stats.json s3://francesco-agnoletto-frontend.com-168992393550-us-east-1-an/data/deploy-stats.json
 
       - name: Invalidate CloudFront cache for index.html
         run: |
           aws cloudfront create-invalidation \
             --distribution-id E183VIHR915PJ2 \
-            --paths "/" "/index.html" "/stats.json"
+            --paths "/" "/index.html" "/data/deploy-stats.json"
