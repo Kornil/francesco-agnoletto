@@ -59,7 +59,7 @@ jobs:
         run: |
           aws s3 sync dist/ s3://francesco-agnoletto-frontend.com-168992393550-us-east-1-an \
             --delete \
-            -- exclude "data/*"
+            --exclude "data/*"
 
           aws s3 cp dist/data/deploy-stats.json s3://francesco-agnoletto-frontend.com-168992393550-us-east-1-an/data/deploy-stats.json
 
