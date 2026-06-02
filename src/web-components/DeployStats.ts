@@ -15,7 +15,7 @@ class DeployStats extends HTMLElement {
       return;
     }
 
-    fetch("/stats.json")
+    fetch("/data/stats.json")
       .then((r) => r.json())
       .then((stats) => {
         appStore.dispatch(appStore.actions.setDeployStats(stats));
