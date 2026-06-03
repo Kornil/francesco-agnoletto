@@ -5,9 +5,9 @@ import type { Store, StoreAction } from "./types";
 // Internal immutable state variable following TEA/Elm semantics.
 let state: Store = {
   deploy: {
-    runNumber: 0,
-    commit: "",
-    durationSeconds: 0,
+    loading: false,
+    error: null,
+    stats: null,
   },
 };
 

@@ -2,42 +2,16 @@ import "../styles/deploy-stats.css";
 
 class DeployStats extends HTMLElement {
   unsubscribe?: () => void;
-  loading = true;
-  error: string | null = null;
 
   // connect component
   connectedCallback() {
     const appStore = window.appStore;
     if (!appStore) {
-      this.error = "Store not available";
-      this.loading = false;
-      this.renderContent();
+      this.renderWrapper(`<li>Store not available</li>`);
       return;
     }
 
-    fetch("/data/deploy-stats.json")
-      .then((r) => r.json())
-      .then((stats) => {
-        appStore.dispatch(appStore.actions.setDeployStats(stats));
-      })
-      .catch((err) => {
-        this.error = err.message;
-        this.loading = false;
-        this.renderContent();
-        return;
-      });
-
     const updateView = () => {
-      const stats = appStore.getState().deploy;
-
-      // Check if we have valid data
-      if (stats && stats.commit) {
-        this.loading = false;
-        this.error = null;
-      } else {
-        this.loading = true;
-      }
-
       this.renderContent();
     };
 
@@ -46,21 +20,21 @@ class DeployStats extends HTMLElement {
   }
 
   private renderContent() {
-    if (this.error) {
-      this.renderWrapper(`<li>${this.error}</li>`);
-      return;
-    }
+    const appStore = window.appStore;
+    const { loading, error, stats } = appStore.getState().deploy;
 
-    if (this.loading) {
+    if (loading) {
       this.renderWrapper(`<li>loading...</li>`);
       return;
     }
 
-    const appStore = window.appStore;
-    const stats = appStore?.getState().deploy;
+    if (error) {
+      this.renderWrapper(`<li>${error}</li>`);
+      return;
+    }
 
     if (!stats) {
-      this.renderWrapper(`<li>no data.</li>`);
+      this.renderWrapper(`<li>no deploy data available</li>`);
       return;
     }
 
@@ -68,7 +42,9 @@ class DeployStats extends HTMLElement {
       <li>deploy #${stats.runNumber}</li>
       <li>completed in ${stats.durationSeconds}s</li>
       <li>
-        <a href="https://github.com/Kornil/francesco-agnoletto/commit/${stats.commit}" target="_blank">${stats.commit.slice(0, 7)}</a>
+        <a href="https://github.com/Kornil/francesco-agnoletto/commit/${stats.commit}" target="_blank">
+          ${stats.commit.slice(0, 7)}
+        </a>
       </li>
     `);
   }

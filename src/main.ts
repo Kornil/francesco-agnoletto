@@ -1,6 +1,7 @@
 import "./styles/style.css";
 
 import { getState, dispatch, subscribe, actions } from "./store";
+import { loadDeployStats } from "./store/deployApi";
 
 declare global {
   interface Window {
@@ -17,6 +18,8 @@ window.appStore = { getState, dispatch, subscribe, actions };
 
 // Dynamically import web components after store is available
 import("./web-components");
+
+loadDeployStats();
 
 /* 
 import typescriptLogo from './assets/typescript.svg'
