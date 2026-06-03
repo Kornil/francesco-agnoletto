@@ -2,6 +2,7 @@ import "./styles/style.css";
 
 import { getState, dispatch, subscribe, actions } from "./store";
 import { loadDeployStats } from "./store/deployApi";
+import { loadCloudfrontMetrics } from "./store/metricsApi";
 
 declare global {
   interface Window {
@@ -20,6 +21,7 @@ window.appStore = { getState, dispatch, subscribe, actions };
 import("./web-components");
 
 loadDeployStats();
+loadCloudfrontMetrics();
 
 /* 
 import typescriptLogo from './assets/typescript.svg'
