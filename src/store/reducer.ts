@@ -27,6 +27,31 @@ export const reducer = (state: Store, action: StoreAction): Store => {
           error: null,
         },
       };
+    case ActionTypes.SET_METRICS_LOADING:
+      return {
+        ...state,
+        metrics: {
+          ...state.metrics,
+          loading: action.payload,
+        },
+      };
+    case ActionTypes.SET_METRICS_ERROR:
+      return {
+        ...state,
+        metrics: {
+          ...state.metrics,
+          error: action.payload,
+        },
+      };
+    case ActionTypes.SET_METRICS_STATS:
+      return {
+        ...state,
+        metrics: {
+          ...state.metrics,
+          stats: action.payload,
+          error: null,
+        },
+      };
     default:
       return state;
   }

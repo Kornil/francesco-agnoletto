@@ -9,6 +9,11 @@ let state: Store = {
     error: null,
     stats: null,
   },
+  metrics: {
+    loading: false,
+    error: null,
+    stats: null,
+  },
 };
 
 // Subscribers are notified after each dispatch.
