@@ -3,6 +3,7 @@ import "./styles/style.css";
 import { getState, dispatch, subscribe, actions } from "./store";
 import { loadDeployStats } from "./store/deployApi";
 import { loadCloudfrontMetrics } from "./store/metricsApi";
+import { loadCostMetrics } from "./store/costApi";
 
 declare global {
   interface Window {
@@ -22,6 +23,7 @@ import("./web-components");
 
 loadDeployStats();
 loadCloudfrontMetrics();
+loadCostMetrics();
 
 /* 
 import typescriptLogo from './assets/typescript.svg'
