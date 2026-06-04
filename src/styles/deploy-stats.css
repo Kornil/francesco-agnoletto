@@ -1,7 +1,3 @@
 .deploy-stats-wrapper {
     padding: 1rem;
-
-    li {
-        list-style: "> ";
-    }
 }
