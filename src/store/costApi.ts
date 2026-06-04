@@ -6,6 +6,7 @@ const servicesDictionary: Record<string, string> = {
   "AWS Lambda": "lambda",
   "CloudFront Flat-Rate Plans": "cloudfront (flat-rate)",
   AmazonCloudWatch: "cloudwatch",
+  "AWS Cost Explorer": "AWS cost explorer",
 };
 
 export async function loadCostMetrics(): Promise<void> {
