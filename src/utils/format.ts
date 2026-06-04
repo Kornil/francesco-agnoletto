@@ -20,3 +20,11 @@ export function formatPercentage(value: number, decimals = 2): string {
 
   return `${value.toFixed(decimals)}%`;
 }
+
+export function formatCurrency(amount: number, currency = "$"): string {
+  if (Number.isNaN(amount)) {
+    return ` ${currency}0.00`;
+  }
+
+  return ` ${currency}${amount.toFixed(2)}`;
+}
