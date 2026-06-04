@@ -1,0 +1,57 @@
+
+{
+
+      "serviceBreakdown": [
+            {
+                  "service": "AWS Cost Explorer",
+                  "amount": "0.01",
+                  "unit": "USD"
+            },
+            {
+                  "service": "AWS Glue",
+                  "amount": "0",
+                  "unit": "USD"
+            },
+            {
+                  "service": "AWS Lambda",
+                  "amount": "0",
+                  "unit": "USD"
+            },
+            {
+                  "service": "AWS Secrets Manager",
+                  "amount": "0.000005",
+                  "unit": "USD"
+            },
+            {
+                  "service": "Amazon Simple Notification Service",
+                  "amount": "0",
+                  "unit": "USD"
+            },
+            {
+                  "service": "Amazon Simple Queue Service",
+                  "amount": "0",
+                  "unit": "USD"
+            },
+            {
+                  "service": "Amazon Simple Storage Service",
+                  "amount": "0.0006904425",
+                  "unit": "USD"
+            },
+            {
+                  "service": "AmazonCloudWatch",
+                  "amount": "0.0008",
+                  "unit": "USD"
+            },
+            {
+                  "service": "CloudFront Flat-Rate Plans",
+                  "amount": "0",
+                  "unit": "USD"
+            },
+            {
+                  "service": "Tax",
+                  "amount": "0",
+                  "unit": "USD"
+            }
+      ]
+
+}
