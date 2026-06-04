@@ -52,6 +52,31 @@ export const reducer = (state: Store, action: StoreAction): Store => {
           error: null,
         },
       };
+    case ActionTypes.SET_COST_LOADING:
+      return {
+        ...state,
+        cost: {
+          ...state.cost,
+          loading: action.payload,
+        },
+      };
+    case ActionTypes.SET_COST_ERROR:
+      return {
+        ...state,
+        cost: {
+          ...state.cost,
+          error: action.payload,
+        },
+      };
+    case ActionTypes.SET_COST_STATS:
+      return {
+        ...state,
+        cost: {
+          ...state.cost,
+          stats: action.payload,
+          error: null,
+        },
+      };
     default:
       return state;
   }

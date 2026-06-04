@@ -14,6 +14,11 @@ let state: Store = {
     error: null,
     stats: null,
   },
+  cost: {
+    loading: false,
+    error: null,
+    stats: null,
+  },
 };
 
 // Subscribers are notified after each dispatch.

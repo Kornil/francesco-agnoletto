@@ -1,6 +1,7 @@
 import {
   ActionTypes,
   type CloudfrontMetrics,
+  type CostBreakdownItem,
   type DeployStats,
   type SetDeployErrorAction,
   type SetDeployLoadingAction,
@@ -8,6 +9,9 @@ import {
   type SetMetricsErrorAction,
   type SetMetricsLoadingAction,
   type SetMetricsStatsAction,
+  type SetCostErrorAction,
+  type SetCostLoadingAction,
+  type SetCostStatsAction,
 } from "./types";
 
 export const setDeployLoading = (loading: boolean): SetDeployLoadingAction => ({
@@ -46,6 +50,23 @@ export const setMetricsStats = (
   payload: stats,
 });
 
+export const setCostLoading = (loading: boolean): SetCostLoadingAction => ({
+  type: ActionTypes.SET_COST_LOADING,
+  payload: loading,
+});
+
+export const setCostError = (error: string | null): SetCostErrorAction => ({
+  type: ActionTypes.SET_COST_ERROR,
+  payload: error,
+});
+
+export const setCostStats = (
+  stats: CostBreakdownItem[],
+): SetCostStatsAction => ({
+  type: ActionTypes.SET_COST_STATS,
+  payload: stats,
+});
+
 export const storeActions = {
   setDeployLoading,
   setDeployError,
@@ -53,4 +74,7 @@ export const storeActions = {
   setMetricsLoading,
   setMetricsError,
   setMetricsStats,
+  setCostLoading,
+  setCostError,
+  setCostStats,
 };

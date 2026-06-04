@@ -5,6 +5,9 @@ export const ActionTypes = {
   SET_METRICS_LOADING: "SET_METRICS_LOADING",
   SET_METRICS_ERROR: "SET_METRICS_ERROR",
   SET_METRICS_STATS: "SET_METRICS_STATS",
+  SET_COST_LOADING: "SET_COST_LOADING",
+  SET_COST_ERROR: "SET_COST_ERROR",
+  SET_COST_STATS: "SET_COST_STATS",
 } as const;
 
 export interface DeployStats {
@@ -33,9 +36,21 @@ export interface MetricsState {
   stats: CloudfrontMetrics | null;
 }
 
+export interface CostBreakdownItem {
+  service: string;
+  amount: string;
+}
+
+export interface CostState {
+  loading: boolean;
+  error: string | null;
+  stats: CostBreakdownItem[] | null;
+}
+
 export interface Store {
   deploy: DeployState;
   metrics: MetricsState;
+  cost: CostState;
 }
 
 export interface SetDeployLoadingAction {
@@ -68,10 +83,28 @@ export interface SetMetricsStatsAction {
   payload: CloudfrontMetrics;
 }
 
+export interface SetCostLoadingAction {
+  type: typeof ActionTypes.SET_COST_LOADING;
+  payload: boolean;
+}
+
+export interface SetCostErrorAction {
+  type: typeof ActionTypes.SET_COST_ERROR;
+  payload: string | null;
+}
+
+export interface SetCostStatsAction {
+  type: typeof ActionTypes.SET_COST_STATS;
+  payload: CostBreakdownItem[];
+}
+
 export type StoreAction =
   | SetDeployLoadingAction
   | SetDeployErrorAction
   | SetDeployStatsAction
   | SetMetricsLoadingAction
   | SetMetricsErrorAction
-  | SetMetricsStatsAction;
+  | SetMetricsStatsAction
+  | SetCostLoadingAction
+  | SetCostErrorAction
+  | SetCostStatsAction;
