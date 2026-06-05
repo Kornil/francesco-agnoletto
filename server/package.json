@@ -1,0 +1,23 @@
+{
+  "name": "francesco-agnoletto-server",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/cloudwatch-metrics-lambda.ts src/cost-explorer-metrics-lambda.ts --bundle --platform=node --target=node24 --format=esm --outdir=dist --minify",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "esbuild": "^0.28.0",
+    "typescript": "~6.0.2"
+  },
+  "engines": {
+    "node": "^24.16.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudwatch": "^3.1063.0",
+    "@aws-sdk/client-cost-explorer": "^3.1063.0",
+    "@aws-sdk/client-s3": "^3.1063.0"
+  }
+}
