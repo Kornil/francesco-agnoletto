@@ -40,7 +40,7 @@ jobs:
       - name: Package cloudwatch-metrics-lambda
         run: |
           cd server
-          zip -j ../cloudwatch-metrics-lambda.zip dist/cloudwatch-metrics-lambda.js
+          zip -j ../cloudwatch-metrics-lambda.zip dist/cloudwatch-metrics-lambda.mjs
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
