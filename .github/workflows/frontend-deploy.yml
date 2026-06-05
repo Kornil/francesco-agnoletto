@@ -1,9 +1,17 @@
-name: Deploy to S3
+name: Frontend Deploy
 
 on:
   push:
     branches:
       - main
+    paths:
+      - "src/**"
+      - "public/**"
+      - "index.html"
+      - "error.html"
+      - "package.json"
+      - "vite.config.ts"
+      - "tsconfig.json"
 
 permissions:
   id-token: write
