@@ -1,0 +1,55 @@
+name: Server Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "server/src/cloudwatch-metrics-lambda.ts"
+      - "server/src/format/*"
+      - "server/package.json"
+      - "server/tsconfig.json"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Install server dependencies
+        run: |
+          cd server
+          npm install
+
+      - name: Build server package
+        run: |
+          cd server
+          npm run build
+
+      - name: Package cloudwatch-metrics-lambda
+        run: |
+          cd server
+          zip -j ../cloudwatch-metrics-lambda.zip dist/cloudwatchMetricsLambda.* || true
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ vars.AWS_GITHUB_ACTION_DEPLOY_CLOUDWATCH_LAMBDA_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Deploy cloudwatch-metrics-lambda
+        run: |
+          aws lambda update-function-code \
+            --function-name ${{ vars.CLOUDWATCH_METRICS_LAMBDA_FUNCTION_NAME }} \
+            --zip-file fileb://cloudwatch-metrics-lambda.zip
