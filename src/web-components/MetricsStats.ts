@@ -1,4 +1,3 @@
-import "../styles/deploy-stats.css";
 import { formatBytes, formatPercentage } from "../utils/format";
 
 class MetricsStats extends HTMLElement {

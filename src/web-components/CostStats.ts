@@ -1,4 +1,3 @@
-import "../styles/deploy-stats.css";
 import { formatCurrency } from "../utils/format";
 
 class CostStats extends HTMLElement {

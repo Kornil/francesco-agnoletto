@@ -1,5 +1,3 @@
-import "../styles/deploy-stats.css";
-
 class DeployStats extends HTMLElement {
   unsubscribe?: () => void;
 
