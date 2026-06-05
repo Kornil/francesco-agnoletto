@@ -41,7 +41,8 @@ jobs:
           END_TIME=$(date +%s)
           DURATION=$((END_TIME - START_TIME))
 
-          cat > dist/data/deploy-stats.json <<EOF
+          mkdir -p artifacts/data
+          cat > artifacts/data/deploy-stats.json <<EOF
           {
             "runNumber": "${{ github.run_number }}",
             "commit": "${{ github.sha }}",
@@ -68,7 +69,7 @@ jobs:
             --exclude "assets/*" \
             --exclude "data/*"
 
-          aws s3 cp dist/data/deploy-stats.json ${{ vars.S3_BUCKET_URI }}/data/deploy-stats.json
+          aws s3 cp artifacts/data/deploy-stats.json ${{ vars.S3_BUCKET_URI }}/data/deploy-stats.json
 
       - name: Invalidate CloudFront cache for index.html
         run: |
