@@ -65,7 +65,7 @@ jobs:
           # No cache for everything else
           aws s3 sync dist/ ${{ vars.S3_BUCKET_URI }} \
             --delete \
-            --exclude "assets/*"
+            --exclude "assets/*" \
             --exclude "data/*"
 
           aws s3 cp dist/data/deploy-stats.json ${{ vars.S3_BUCKET_URI }}/data/deploy-stats.json
