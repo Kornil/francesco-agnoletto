@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build-cloudwatch": "esbuild src/cloudwatch-metrics-lambda.ts --bundle --platform=node --target=node24 --format=esm --outdir=dist --minify",
+    "build-cloudwatch": "esbuild src/cloudwatch-metrics-lambda.ts --bundle --platform=node --target=node24 --format=esm --outdir=dist  --out-extension:.js=.mjs --minify",
     "build-cost-explorer": "esbuild src/cost-explorer-metrics-lambda.ts --bundle --platform=node --target=node24 --format=esm --outdir=dist --minify",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },

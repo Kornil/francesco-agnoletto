@@ -1,4 +1,4 @@
-name: Server Deploy
+name: Server Deploy CloudWatch Lambda
 
 on:
   push:
