@@ -60,7 +60,6 @@ export const handler = async () => {
         Key: `data/cost-metrics.json`,
         Body: JSON.stringify(data),
         ContentType: "application/json",
-        CacheControl: "max-age=86400, must-revalidate",
       }),
     );
 
