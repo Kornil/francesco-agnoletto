@@ -99,12 +99,14 @@ code {
   background: var(--code-bg);
 }
 
-ul {
+section {
   h3 {
-    margin: 0 0 0.5rem -35px;
+    margin: 0 0 0.5rem 6px;
     color: var(--text-h);
   }
+}
 
+ul {
   li {
     list-style: "> ";
     margin-bottom: 4px;
@@ -174,7 +176,6 @@ main {
 header-component {
   header {
     display: flex;
-    gap: 16px;
     justify-content: space-between;
     width: 100%;
 

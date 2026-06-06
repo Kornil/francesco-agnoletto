@@ -49,12 +49,12 @@ class DeployStats extends HTMLElement {
 
   private renderWrapper(content: string) {
     this.innerHTML = `
-      <div>
+      <section>
+        <h3>// Deployment</h3>
         <ul>
-          <h3>// Deployment</h3>
           ${content}
         </ul>
-      </div>
+      </section>
     `;
   }
 

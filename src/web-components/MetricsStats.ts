@@ -48,12 +48,12 @@ class MetricsStats extends HTMLElement {
 
   private renderWrapper(content: string) {
     this.innerHTML = `
-      <div>
+      <section>
+        <h3>// Metrics</h3>
         <ul>
-          <h3>// Metrics</h3>
           ${content}
         </ul>
-      </div>
+      </section>
     `;
   }
 
