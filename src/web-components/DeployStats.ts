@@ -37,9 +37,9 @@ class DeployStats extends HTMLElement {
     }
 
     this.renderWrapper(`
-      <li>deploy #${stats.runNumber}</li>
-      <li>completed in ${stats.durationSeconds}s</li>
-      <li>
+      <li>run: #${stats.runNumber}</li>
+      <li>duration: ${stats.durationSeconds}s</li>
+      <li>commit: 
         <a href="https://github.com/Kornil/francesco-agnoletto/commit/${stats.commit}" target="_blank">
           ${stats.commit.slice(0, 7)}
         </a>
@@ -49,8 +49,9 @@ class DeployStats extends HTMLElement {
 
   private renderWrapper(content: string) {
     this.innerHTML = `
-      <div class="deploy-stats-wrapper">
+      <div>
         <ul>
+          <h3>// Deployment</h3>
           ${content}
         </ul>
       </div>

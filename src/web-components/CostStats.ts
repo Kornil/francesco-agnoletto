@@ -49,8 +49,9 @@ class CostStats extends HTMLElement {
 
   private renderWrapper(content: string) {
     this.innerHTML = `
-      <div class="deploy-stats-wrapper">
+      <div>
         <ul>
+          <h3>// Cost</h3>
           ${content}
         </ul>
       </div>
