@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - "server/src/cost-explorer-metrics-lambda.ts"
-      - "server/src/format/*"
+      - "server/src/utils/*"
       - "server/package.json"
       - "server/tsconfig.json"
 
