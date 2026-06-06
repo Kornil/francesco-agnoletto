@@ -33,14 +33,15 @@ export const handler = async () => {
       ],
     };
 
-    if (process.env.TAG_VALUE) {
+    // reconsider adding tag-based filtering if needed in the future
+    /* if (process.env.TAG_VALUE) {
       commandParams.Filter = {
         Tags: {
           Key: process.env.TAG_KEY,
           Values: [process.env.TAG_VALUE],
         },
       };
-    }
+    } */
 
     const cost = await client.send(new GetCostAndUsageCommand(commandParams));
 
