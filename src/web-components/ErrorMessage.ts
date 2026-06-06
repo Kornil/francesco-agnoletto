@@ -1,8 +1,10 @@
 class ErrorMessage extends HTMLElement {
   // connect component
   connectedCallback() {
-    this.textContent =
-      "This page does not exist. Please check the URL and try again.";
+    this.innerHTML = `<ul>
+        <li>This page does not exist.</li>
+        <li> Please check the URL and try again.</li>
+      </ul>`;
   }
 }
 
