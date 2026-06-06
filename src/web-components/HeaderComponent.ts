@@ -3,7 +3,10 @@ class HeaderComponent extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <header>
-        <h1>Francesco Agnoletto</h1>
+        <div>
+          <h1>Francesco Agnoletto</h1>
+          <h2>Lead software engineer.</h2>
+        </div>
         <ul>
           <li>
             <a href="https://github.com/Kornil" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub profile">github</a>
