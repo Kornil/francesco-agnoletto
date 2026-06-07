@@ -44,10 +44,6 @@
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
   }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
 }
 
 body {
@@ -99,6 +95,8 @@ code {
 }
 
 section {
+  margin-bottom: 1.5rem;
+
   h3 {
     margin: 0 0 0.5rem 6px;
     color: var(--text-h);
@@ -141,14 +139,17 @@ main {
   flex-direction: column;
   box-sizing: border-box;
 
+  @media (max-width: 1024px) {
+    padding: 1rem 0 0;
+  }
+
   display: grid;
-  grid-template-areas:
-    "header"
-    "hero"
-    "center"
-    "footer";
+  grid-template-areas: "header"
+  "hero"
+  "center"
+  "footer";
   grid-template-columns: 1fr;
-  grid-template-rows: 120px 1fr 2fr 1fr;
+  grid-template-rows: 0.5fr 1fr 1.5fr 0.5fr;
 
   header-component {
     grid-area: header;
