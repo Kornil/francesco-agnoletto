@@ -51,6 +51,7 @@ class DeployStats extends HTMLElement {
     this.innerHTML = `
       <section>
         <h3>// Deployment</h3>
+        <h4>updated from GitHub Actions</h4>
         <ul>
           ${content}
         </ul>

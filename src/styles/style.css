@@ -101,6 +101,10 @@ section {
     margin: 0 0 0.5rem 6px;
     color: var(--text-h);
   }
+
+  h4 {
+    margin: 0 0 0.5rem 40px;
+  }
 }
 
 ul {

@@ -50,6 +50,7 @@ class MetricsStats extends HTMLElement {
     this.innerHTML = `
       <section>
         <h3>// Metrics</h3>
+        <h4>updated hourly from Amazon CloudWatch</h4>
         <ul>
           ${content}
         </ul>

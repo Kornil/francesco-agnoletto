@@ -51,6 +51,7 @@ class CostStats extends HTMLElement {
     this.innerHTML = `
       <section>
         <h3>// Cost</h3>
+        <h4>updated daily from AWS Cost Explorer</h4>
         <ul>
           ${content}
         </ul>
