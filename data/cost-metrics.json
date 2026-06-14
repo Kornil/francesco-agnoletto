@@ -48,6 +48,11 @@
                   "unit": "USD"
             },
             {
+                  "service": "Amazon Route 53",
+                  "amount": "0.5014984",
+                  "unit": "USD"
+            },
+            {
                   "service": "Tax",
                   "amount": "0",
                   "unit": "USD"

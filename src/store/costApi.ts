@@ -7,6 +7,7 @@ const servicesDictionary: Record<string, string> = {
   "CloudFront Flat-Rate Plans": "cloudfront (flat-rate)",
   AmazonCloudWatch: "cloudwatch",
   "AWS Cost Explorer": "AWS cost explorer",
+  "Amazon Route 53": "hosted zone (flat-rate)",
 };
 
 export async function loadCostMetrics(): Promise<void> {
