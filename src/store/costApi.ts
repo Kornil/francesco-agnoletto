@@ -25,9 +25,10 @@ export async function loadCostMetrics(): Promise<void> {
     };
     const stats = payload.serviceBreakdown
       .filter((item) => !!servicesDictionary[item.service])
+      .sort((a, b) => Number(b.amount) - Number(a.amount))
       .map((item) => ({
         service: servicesDictionary[item.service],
-        amount: String(item.amount),
+        amount: item.amount,
       }));
     dispatch(actions.setCostStats(stats));
   } catch (error) {
