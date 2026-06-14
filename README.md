@@ -48,6 +48,19 @@ The `server/` package contains the Lambda code.
 
 Both lambdas use the AWS SDK v3 and write JSON output to the configured S3 bucket.
 
+## Terraform infrastructure
+
+The repo includes a `terraform/` directory for AWS infrastructure management.
+
+- `terraform/providers.tf` and `terraform/versions.tf` configure the AWS provider and Terraform version.
+- `terraform/aws-iam-openid-connect-provider.tf` defines GitHub Actions OIDC trust and IAM roles for Lambda and frontend deployment on CI.
+- `terraform/s3.tf` creates the S3 bucket used by the site and backend data files.
+- `terraform/cloudfront.tf.future` defines the CloudFront distribution and origin access controls.
+- `terraform/lambda-cloudwatch.tf` and `terraform/lambda-cost-explorer.tf` define the Lambda functions, IAM roles, and permissions.
+- `terraform/eventbridge.tf` schedules hourly and daily AWS EventBridge rules to invoke the lambdas.
+- `terraform/route53.tf` resolves the Route 53 hosted zone for the configured domain.
+- `terraform/variables.tf` stores domain and CloudFront distribution configuration values.
+
 ## Local development
 
 At the repository root:
@@ -101,19 +114,6 @@ The repository includes three GitHub Actions workflows:
 - `.github/workflows/server-deploy-cost-explorer-lambda.yml`
   - Triggers on changes to `server/src/cost-explorer-metrics-lambda.ts`, `server/src/utils/*`, or `server` package metadata.
   - Builds the Cost Explorer lambda and deploys it to the configured Lambda function.
-
-## Terraform infrastructure
-
-The repo includes a `terraform/` directory for AWS infrastructure management.
-
-- `terraform/providers.tf` and `terraform/versions.tf` configure the AWS provider and Terraform version.
-- `terraform/aws-iam-openid-connect-provider.tf` defines GitHub Actions OIDC trust and IAM roles for Lambda and frontend deployment on CI.
-- `terraform/s3.tf` creates the S3 bucket used by the site and backend data files.
-- `terraform/cloudfront.tf.future` defines the CloudFront distribution and origin access controls.
-- `terraform/lambda-cloudwatch.tf` and `terraform/lambda-cost-explorer.tf` define the Lambda functions, IAM roles, and permissions.
-- `terraform/eventbridge.tf` schedules hourly and daily AWS EventBridge rules to invoke the lambdas.
-- `terraform/route53.tf` resolves the Route 53 hosted zone for the configured domain.
-- `terraform/variables.tf` stores domain and CloudFront distribution configuration values.
 
 ## Output data files
 
