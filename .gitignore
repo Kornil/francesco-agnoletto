@@ -14,6 +14,9 @@ server/node_modules
 server/dist
 server/*.zip
 *.local
+terraform.tfstate
+terraform.tfstate.backup
+.terraform/
 
 # Editor directories and files
 .vscode/*
