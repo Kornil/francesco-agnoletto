@@ -17,6 +17,7 @@ server/*.zip
 terraform.tfstate
 terraform.tfstate.backup
 .terraform/
+*.future
 
 # Editor directories and files
 .vscode/*
