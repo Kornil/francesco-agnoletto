@@ -52,14 +52,8 @@ Both lambdas use the AWS SDK v3 and write JSON output to the configured S3 bucke
 
 The repo includes a `terraform/` directory for AWS infrastructure management.
 
-- `terraform/providers.tf` and `terraform/versions.tf` configure the AWS provider and Terraform version.
-- `terraform/aws-iam-openid-connect-provider.tf` defines GitHub Actions OIDC trust and IAM roles for Lambda and frontend deployment on CI.
-- `terraform/s3.tf` creates the S3 bucket used by the site and backend data files.
-- `terraform/cloudfront.tf.future` defines the CloudFront distribution and origin access controls.
-- `terraform/lambda-cloudwatch.tf` and `terraform/lambda-cost-explorer.tf` define the Lambda functions, IAM roles, and permissions.
-- `terraform/eventbridge.tf` schedules hourly and daily AWS EventBridge rules to invoke the lambdas.
-- `terraform/route53.tf` resolves the Route 53 hosted zone for the configured domain.
-- `terraform/variables.tf` stores domain and CloudFront distribution configuration values.
+See [the terraform readme](terraform/README.md) for specifics about the resources provisioned.
+A copy of the terraform state is securely stored in a private versioned S3 bucket.
 
 ## Local development
 
