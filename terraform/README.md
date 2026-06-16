@@ -13,5 +13,5 @@ The config includes an s3 backend for remote state storage.
 	- CloudWatch metrics exporter (`cloudwatch-metrics-lambda`) — hourly.
 	- Cost Explorer metrics exporter (`cost-explorer-lambda`) — daily.
 - **eventBridge.tf**: Scheduled triggers to invoke the Lambdas.
-- **aws-iam-openid-connect-provider.tf**: An OpenID Connect provider and roles to allow GitHub Actions to deploy Lambdas and the frontend.
+- **modules/github-oidc**: A module containing the OpenID Connect provider and GitHub Actions deploy roles.
 - **route53.tf**: Uses an existing hosted zone for the configured domain name (lookup).
