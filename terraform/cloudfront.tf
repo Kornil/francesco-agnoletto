@@ -75,6 +75,7 @@ resource "aws_cloudfront_distribution" "francesco-agnoletto" {
 
   aliases = [
     var.domain_name,
+    "www.${var.domain_name}"
   ]
 
   depends_on = [
