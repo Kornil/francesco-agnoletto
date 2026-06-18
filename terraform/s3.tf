@@ -37,7 +37,7 @@ resource "aws_s3_bucket_policy" "francesco-agnoletto-bucket-policy" {
 
         Condition = {
           ArnLike = {
-            "AWS:SourceArn" = aws_cloudfront_distribution.francesco-agnoletto.arn
+            "AWS:SourceArn" = module.hosting.aws_cloudfront_distribution_arn
           }
         }
       }

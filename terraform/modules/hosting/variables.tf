@@ -3,3 +3,7 @@ variable "domain_name" {
   type        = string
   default     = "francesco-agnoletto.com"
 }
+
+variable "bucket_regional_domain_name" {
+  type = string
+}

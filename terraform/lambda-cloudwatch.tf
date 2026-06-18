@@ -9,7 +9,7 @@ resource "aws_lambda_function" "francesco-agnoletto-cloudwatch-metrics-lambda" {
   environment {
     variables = {
       S3_BUCKET_NAME             = aws_s3_bucket.francesco-agnoletto-bucket.bucket
-      CLOUDFRONT_DISTRIBUTION_ID = aws_cloudfront_distribution.francesco-agnoletto.id
+      CLOUDFRONT_DISTRIBUTION_ID = module.hosting.aws_cloudfront_distribution_id
     }
   }
 
