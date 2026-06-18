@@ -14,4 +14,4 @@ The config includes an s3 backend for remote state storage.
 	- Cost Explorer metrics exporter (`cost-explorer-lambda`) — daily.
 - **eventBridge.tf**: Scheduled triggers to invoke the Lambdas.
 - **modules/github-oidc**: A module containing the OpenID Connect provider and GitHub Actions deploy roles.
-- **route53.tf**: Uses an existing hosted zone for the configured domain name (lookup).
+- **modules/hosting**: Module containing the acm certificate ad route53 DNS validation, plus cloudfront and related waf and function files.
