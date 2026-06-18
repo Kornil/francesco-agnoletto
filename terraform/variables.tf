@@ -15,3 +15,13 @@ variable "cloudfront_distribution_arn" {
   type        = string
   default     = "arn:aws:cloudfront::168992393550:distribution/E183VIHR915PJ2"
 }
+
+variable "route53_validation_record" {
+  type    = string
+  default = "_c8a7c1bc50c730674e8faf8d639fa896.francesco-agnoletto.com."
+}
+
+variable "route53_CNAME_record" {
+  type    = string
+  default = "_9f4d49085d39212b8edaf27b6a3365a9.jkddzztszm.acm-validations.aws."
+}
