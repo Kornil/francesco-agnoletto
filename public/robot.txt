@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://francesco-agnoletto.com/sitemap.xml
