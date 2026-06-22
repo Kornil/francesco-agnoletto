@@ -1,7 +1,42 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <script type="application/ld+json">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Francesco Agnoletto | Error page</title>
+
+  <meta name="author" content="Francesco Agnoletto" />
+  <link rel="canonical" href="https://francesco-agnoletto.com/" />
+  <meta name="description"
+    content="Error page for Francesco Agnoletto website, shown when application data cannot load." />
+  <meta name="keywords" content="
+        Francesco Agnoletto,
+        Lead Frontend Engineer,
+        Software Engineer,
+        React Developer,
+        TypeScript Developer,
+        JavaScript Developer,
+        Frontend Developer,
+        Frontend Architecture,
+        Web Performance,
+        Real-time Dashboards
+      " />
+
+  <meta property="og:title" content="Francesco Agnoletto | Error page" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://francesco-agnoletto.com/error/" />
+  <meta property="og:description"
+    content="Error page for Francesco Agnoletto website, shown when application data cannot load." />
+
+  <meta name="twitter:title" content="Francesco Agnoletto | Lead Frontend Engineer" />
+  <meta name="twitter:description"
+    content="Error page for Francesco Agnoletto website, shown when application data cannot load." />
+  <meta name="twitter:card" content="summary" />
+
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
@@ -25,7 +60,7 @@
     }
     </script>
 
-    <script type="application/ld+json">
+  <script type="application/ld+json">
     {
     "@context":"https://schema.org",
     "@type":"SoftwareApplication",
@@ -40,47 +75,15 @@
     }
     </script>
 
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/src/styles/style.css">
+</head>
 
-    <title>Francesco Agnoletto | Error page</title>
+<body>
+  <main>
+    <load src="src/layout/header.html" />
 
-    <meta name="author" content="Francesco Agnoletto" />
-    <link rel="canonical" href="https://francesco-agnoletto.com/" />
-    <meta name="description" content="Error page for Francesco Agnoletto website, shown when application data cannot load." />
-    <meta
-      name="keywords"
-      content="
-        Francesco Agnoletto,
-        Lead Frontend Engineer,
-        Software Engineer,
-        React Developer,
-        TypeScript Developer,
-        JavaScript Developer,
-        Frontend Developer,
-        Frontend Architecture,
-        Web Performance,
-        Real-time Dashboards
-      "
-    />
+    <load src="src/layout/error.html" />
+  </main>
+</body>
 
-    <meta property="og:title" content="Francesco Agnoletto | Error page" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://francesco-agnoletto.com/error/" />
-    <meta property="og:description" content="Error page for Francesco Agnoletto website, shown when application data cannot load." />
-
-    <meta name="twitter:title" content="Francesco Agnoletto | Lead Frontend Engineer" />
-    <meta name="twitter:description" content="Error page for Francesco Agnoletto website, shown when application data cannot load." />
-    <meta name="twitter:card" content="summary" />
-
-    <link rel="stylesheet" href="/src/styles/style.css">
-  </head>
-  <body>
-    <main>
-      <load src="src/layout/header.html" />
-      
-      <load src="src/layout/error.html" />
-    </main>
-  </body>
 </html>

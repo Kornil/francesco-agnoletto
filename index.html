@@ -1,8 +1,44 @@
 <!doctype html>
 <html lang="en">
 
-  <head>
-    <script type="application/ld+json">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Francesco Agnoletto | Lead Frontend Engineer | React, TypeScript, AWS</title>
+
+  <meta name="author" content="Francesco Agnoletto" />
+  <link rel="canonical" href="https://francesco-agnoletto.com/" />
+  <meta name="description"
+    content="Francesco Agnoletto is a Lead Frontend Engineer with 9+ years of experience building scalable web applications, analytics platforms, and real-time dashboards using React, TypeScript, AWS, and modern frontend architecture." />
+  <meta name="keywords" content="
+        Francesco Agnoletto,
+        Lead Frontend Engineer,
+        Software Engineer,
+        React Developer,
+        TypeScript Developer,
+        JavaScript Developer,
+        Frontend Developer,
+        Frontend Architecture,
+        Web Performance,
+        Real-time Dashboards
+      " />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Francesco Agnoletto | Lead Frontend Engineer" />
+  <meta property="og:url" content="https://francesco-agnoletto.com/" />
+  <meta property="og:description"
+    content="Lead Frontend Engineer specializing in React, TypeScript, AWS, performance optimization, and data-intensive web applications." />
+  <!-- <meta property="og:image" content="https://francesco-agnoletto.com/og-image.png" /> -->
+
+  <meta name="twitter:title" content="Francesco Agnoletto | Lead Frontend Engineer" />
+  <meta name="twitter:description"
+    content="React, TypeScript, AWS, frontend architecture and performance engineering." />
+  <meta name="twitter:card" content="summary" />
+  <!-- <meta name="twitter:image" content="https://francesco-agnoletto.com/og-image.png" /> -->
+
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
@@ -26,7 +62,7 @@
     }
     </script>
 
-    <script type="application/ld+json">
+  <script type="application/ld+json">
     {
     "@context":"https://schema.org",
     "@type":"SoftwareApplication",
@@ -41,61 +77,18 @@
     }
     </script>
 
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/src/styles/style.css">
+</head>
 
-    <title>Francesco Agnoletto | Lead Frontend Engineer | React, TypeScript, AWS</title>
+<body>
+  <main>
+    <load src="src/layout/header.html" />
 
-    <meta name="author" content="Francesco Agnoletto" />
-    <link rel="canonical" href="https://francesco-agnoletto.com/" />
-    <meta
-      name="description"
-      content="Francesco Agnoletto is a Lead Frontend Engineer with 9+ years of experience building scalable web applications, analytics platforms, and real-time dashboards using React, TypeScript, AWS, and modern frontend architecture."
-    />
-    <meta
-      name="keywords"
-      content="
-        Francesco Agnoletto,
-        Lead Frontend Engineer,
-        Software Engineer,
-        React Developer,
-        TypeScript Developer,
-        JavaScript Developer,
-        Frontend Developer,
-        Frontend Architecture,
-        Web Performance,
-        Real-time Dashboards
-      "
-    />
+    <deploy-stats></deploy-stats>
+    <metrics-stats></metrics-stats>
+    <cost-stats></cost-stats>
+  </main>
+  <script type="module" src="/src/main.ts"></script>
+</body>
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Francesco Agnoletto | Lead Frontend Engineer" />
-    <meta property="og:url" content="https://francesco-agnoletto.com/" />
-    <meta
-      property="og:description"
-      content="Lead Frontend Engineer specializing in React, TypeScript, AWS, performance optimization, and data-intensive web applications."
-    />
-    <!-- <meta property="og:image" content="https://francesco-agnoletto.com/og-image.png" /> -->
-
-    <meta name="twitter:title" content="Francesco Agnoletto | Lead Frontend Engineer" />
-    <meta
-      name="twitter:description"
-      content="React, TypeScript, AWS, frontend architecture and performance engineering."
-    />
-    <meta name="twitter:card" content="summary" />
-    <!-- <meta name="twitter:image" content="https://francesco-agnoletto.com/og-image.png" /> -->
-
-    <link rel="stylesheet" href="/src/styles/style.css">
-  </head>
-  <body>
-    <main>
-      <load src="src/layout/header.html" />
-
-      <deploy-stats></deploy-stats>
-      <metrics-stats></metrics-stats>
-      <cost-stats></cost-stats>
-    </main>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
 </html>
