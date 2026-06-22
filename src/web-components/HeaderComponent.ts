@@ -5,7 +5,7 @@ class HeaderComponent extends HTMLElement {
       <header>
         <div>
           <h1>Francesco Agnoletto</h1>
-          <h2>Lead software engineer.</h2>
+          <h2>Lead Frontend Engineer specializing in React, TypeScript, AWS and scalable web applications.</h2>
         </div>
         <ul>
           <li>
