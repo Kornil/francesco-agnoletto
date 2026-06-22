@@ -1,5 +1,3 @@
-import "./styles/style.css";
-
 import { getState, dispatch, subscribe, actions } from "./store";
 import { loadDeployStats } from "./store/deployApi";
 import { loadCloudfrontMetrics } from "./store/metricsApi";
