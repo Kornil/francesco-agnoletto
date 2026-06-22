@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import path, { resolve } from "path";
 import fs from "fs";
+import injectHTML from "vite-plugin-html-inject";
 
 export default defineConfig({
   build: {
@@ -12,6 +13,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    injectHTML(),
     {
       name: "mock-api",
       configureServer(server) {
