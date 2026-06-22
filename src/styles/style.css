@@ -160,12 +160,20 @@ main {
   grid-template-columns: 1fr;
   grid-template-rows: 0.5fr 1fr 1.5fr 0.5fr;
 
-  header-component {
+  header {
     grid-area: header;
     grid-column: 1 / -1;
 
     display: flex;
     justify-content: flex-end;
+
+    >div {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      margin: 0 40px;
+    }
   }
 
   metrics-stats {
@@ -182,20 +190,19 @@ main {
   }
 }
 
-header-component {
-  header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+/* 
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 
-    margin-left: 40px;
-    margin-right: 1rem;
-  }
-}
+  margin-left: 40px;
+  margin-right: 1rem;
+} */
 
 deploy-stats {
   display: flex;
   flex-direction: row-reverse;
 
-  margin-right: 16px;
+  margin-right: 40px;
 }
