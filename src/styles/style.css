@@ -164,13 +164,9 @@ main {
     grid-area: header;
     grid-column: 1 / -1;
 
-    display: flex;
-    justify-content: flex-end;
-
     >div {
       display: flex;
       justify-content: space-between;
-      width: 100%;
 
       margin: 0 40px;
     }
@@ -185,22 +181,12 @@ main {
     grid-area: center;
   }
 
-  deploy-stats {
+  .deploy-stats {
     grid-area: footer;
   }
 }
 
-/* 
-header {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-
-  margin-left: 40px;
-  margin-right: 1rem;
-} */
-
-deploy-stats {
+.deploy-stats {
   display: flex;
   flex-direction: row-reverse;
 

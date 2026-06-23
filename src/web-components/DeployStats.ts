@@ -1,68 +1,49 @@
-class DeployStats extends HTMLElement {
-  unsubscribe?: () => void;
+export function initDeployStats() {
+  const root = document.querySelector("[data-deploy-stats]");
+  if (!root) return;
 
-  // connect component
-  connectedCallback() {
-    const appStore = window.appStore;
-    if (!appStore) {
-      this.renderWrapper(`<li>Store not available</li>`);
-      return;
-    }
-
-    const updateView = () => {
-      this.renderContent();
-    };
-
-    updateView();
-    this.unsubscribe = appStore.subscribe(updateView);
+  const appStore = window.appStore;
+  if (!appStore) {
+    setError(root, `Store not available`);
+    return;
   }
 
-  private renderContent() {
+  const render = () => {
     const appStore = window.appStore;
     const { loading, error, stats } = appStore.getState().deploy;
 
     if (loading) {
-      this.renderWrapper(`<li>loading...</li>`);
+      setLoading(root);
       return;
     }
 
     if (error) {
-      this.renderWrapper(`<li>${error}</li>`);
+      setError(root, error);
       return;
     }
 
     if (!stats) {
-      this.renderWrapper(`<li>no deploy data available</li>`);
+      setError(root, `no deploy data available`);
       return;
     }
 
-    this.renderWrapper(`
-      <li>run: #${stats.runNumber}</li>
-      <li>duration: ${stats.durationSeconds}s</li>
-      <li>commit: 
-        <a href="https://github.com/Kornil/francesco-agnoletto/commit/${stats.commit}" target="_blank">
-          ${stats.commit.slice(0, 7)}
-        </a>
-      </li>
-    `);
-  }
+    root.querySelector("[data-run]")!.textContent = `run: #${stats.runNumber}`;
+    root.querySelector("[data-duration]")!.textContent =
+      `duration: ${stats.durationSeconds}s`;
+    const commit = root.querySelector<HTMLAnchorElement>("[data-commit]")!;
+    commit.textContent = stats.commit.slice(0, 7);
+    commit.href = `https://github.com/Kornil/francesco-agnoletto/commit/${stats.commit}`;
+  };
 
-  private renderWrapper(content: string) {
-    this.innerHTML = `
-      <section>
-        <h3>// Deployment</h3>
-        <h4>updated from GitHub Actions</h4>
-        <ul>
-          ${content}
-        </ul>
-      </section>
-    `;
-  }
+  render();
 
-  disconnectedCallback() {
-    this.unsubscribe?.();
-  }
+  appStore.subscribe(render);
 }
 
-// register component
-customElements.define("deploy-stats", DeployStats);
+function setLoading(root: Element) {
+  root.querySelector("[data-run]")!.textContent = "loading...";
+}
+
+function setError(root: Element, message: string) {
+  root.querySelector("[data-run]")!.textContent = message;
+}
