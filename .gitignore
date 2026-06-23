@@ -29,3 +29,6 @@ terraform.tfstate.backup
 *.njsproj
 *.sln
 *.sw?
+
+# public mock files
+public/data/*

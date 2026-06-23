@@ -12,30 +12,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [
-    injectHTML(),
-    {
-      name: "mock-api",
-      configureServer(server) {
-        server.middlewares.use("/data", (req, res, next) => {
-          const file = req.url?.replace(/^\//, "");
-
-          if (!file) {
-            next();
-            return;
-          }
-
-          const filePath = path.join(__dirname, "mocks", file);
-
-          if (fs.existsSync(filePath)) {
-            res.setHeader("Content-Type", "application/json");
-            res.end(fs.readFileSync(filePath, "utf8"));
-            return;
-          }
-
-          next();
-        });
-      },
-    },
-  ],
+  plugins: [injectHTML()],
 });
