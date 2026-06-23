@@ -1,66 +1,72 @@
+import type { CloudfrontMetrics } from "../store/types";
 import { formatBytes, formatPercentage } from "../utils/format";
 
-class MetricsStats extends HTMLElement {
-  unsubscribe?: () => void;
+const selectors: string[] = [
+  "[data-requests]",
+  "[data-bandwidth]",
+  "[data-cache]",
+  "[data-latency]",
+  "[data-availability]",
+];
 
-  connectedCallback() {
-    const appStore = window.appStore;
-    if (!appStore) {
-      this.renderWrapper(`<li>Store not available</li>`);
-      return;
-    }
+const formatMatrix: Array<[string, (value: CloudfrontMetrics) => string]> = [
+  ["requests/month", (stats) => String(stats.requests)],
+  ["bandwidth/month", (stats) => formatBytes(stats.bandwidth)],
+  ["cache hit rate", (stats) => formatPercentage(stats.cacheHitRate)],
+  ["origin latency", (stats) => stats.originLatency.toFixed(2)],
+  ["availability", (stats) => formatPercentage(stats.availability)],
+];
 
-    const updateView = () => {
-      this.renderContent();
-    };
+export function initMetricsStats() {
+  const root = document.querySelector("[data-metrics-stats]");
+  if (!root) return;
 
-    updateView();
-    this.unsubscribe = appStore.subscribe(updateView);
+  const appStore = window.appStore;
+  if (!appStore) {
+    setError(root);
+    return;
   }
 
-  private renderContent() {
+  const render = () => {
     const appStore = window.appStore;
     const { loading, error, stats } = appStore.getState().metrics;
 
     if (loading) {
-      this.renderWrapper(`<li>loading...</li>`);
+      setLoading(root);
       return;
     }
 
     if (error) {
-      this.renderWrapper(`<li>${error}</li>`);
+      setError(root);
       return;
     }
 
     if (!stats) {
-      this.renderWrapper(`<li>no metrics data available</li>`);
+      setError(root);
       return;
     }
 
-    this.renderWrapper(`
-      <li>requests/month: ${stats.requests}</li>
-      <li>bandwidth/month: ${formatBytes(stats.bandwidth)}</li>
-      <li>cache hit rate: ${formatPercentage(stats.cacheHitRate)}</li>
-      <li>origin latency: ${stats.originLatency.toFixed(2)}ms</li>
-      <li>availability: ${formatPercentage(stats.availability)}</li>
-    `);
-  }
+    selectors.map(
+      (selector, index) =>
+        (root.querySelector(selector)!.textContent =
+          `${formatMatrix[index][0]}: $${formatMatrix[index][1](stats)}`),
+    );
+  };
 
-  private renderWrapper(content: string) {
-    this.innerHTML = `
-      <section>
-        <h3>// Metrics</h3>
-        <h4>updated hourly from Amazon CloudWatch</h4>
-        <ul>
-          ${content}
-        </ul>
-      </section>
-    `;
-  }
+  render();
 
-  disconnectedCallback() {
-    this.unsubscribe?.();
-  }
+  appStore.subscribe(render);
 }
 
-customElements.define("metrics-stats", MetricsStats);
+function setLoading(root: Element) {
+  selectors.map(
+    (selector) => (root.querySelector(selector)!.textContent = "loading..."),
+  );
+}
+
+function setError(root: Element) {
+  selectors.map(
+    (selector) =>
+      (root.querySelector(selector)!.textContent = "not available."),
+  );
+}

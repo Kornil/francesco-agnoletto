@@ -1,8 +1,10 @@
 import "./store/initializer";
+import {
+  initMetricsStats,
+  initCostStats,
+  initDeployStats,
+} from "./web-components";
 
-// Dynamically import web components after store is available
-import("./web-components");
-
-loadDeployStats();
-loadCloudfrontMetrics();
-loadCostMetrics();
+initMetricsStats();
+initCostStats();
+initDeployStats();

@@ -1,67 +1,64 @@
 import { formatCurrency } from "../utils/format";
 
-class CostStats extends HTMLElement {
-  unsubscribe?: () => void;
+const selectors: string[] = [
+  "[data-hosted-zone]",
+  "[data-aws-cost-explorer]",
+  "[data-cloudwatch]",
+  "[data-s3]",
+  "[data-lambda]",
+  "[data-cloudfront]",
+];
 
-  connectedCallback() {
-    const appStore = window.appStore;
-    if (!appStore) {
-      this.renderWrapper(`<li>Store not available</li>`);
-      return;
-    }
+export function initCostStats() {
+  const root = document.querySelector("[data-cost-stats]");
+  if (!root) return;
 
-    const updateView = () => {
-      this.renderContent();
-    };
-
-    updateView();
-    this.unsubscribe = appStore.subscribe(updateView);
+  const appStore = window.appStore;
+  if (!appStore) {
+    setError(root);
+    return;
   }
 
-  private renderContent() {
+  const render = () => {
     const appStore = window.appStore;
     const { loading, error, stats } = appStore.getState().cost;
 
     if (loading) {
-      this.renderWrapper(`<li>loading...</li>`);
+      setLoading(root);
       return;
     }
 
     if (error) {
-      this.renderWrapper(`<li>${error}</li>`);
+      setError(root);
       return;
     }
 
     if (!stats || stats.length === 0) {
-      this.renderWrapper(`<li>no cost data available</li>`);
+      setError(root);
       return;
     }
 
-    this.renderWrapper(`
-      ${stats
-        .map(
-          (item) =>
-            `<li>${item.service}: ${formatCurrency(Number(item.amount))}</li>`,
-        )
-        .join("")}
-    `);
-  }
+    selectors.map(
+      (selector, index) =>
+        (root.querySelector(selector)!.textContent =
+          `${stats[index].service}: ${formatCurrency(Number(stats[index].amount))}`),
+    );
+  };
 
-  private renderWrapper(content: string) {
-    this.innerHTML = `
-      <section>
-        <h3>// Cost</h3>
-        <h4>updated daily from AWS Cost Explorer</h4>
-        <ul>
-          ${content}
-        </ul>
-      </section>
-    `;
-  }
+  render();
 
-  disconnectedCallback() {
-    this.unsubscribe?.();
-  }
+  appStore.subscribe(render);
 }
 
-customElements.define("cost-stats", CostStats);
+function setLoading(root: Element) {
+  selectors.map(
+    (selector) => (root.querySelector(selector)!.textContent = "loading..."),
+  );
+}
+
+function setError(root: Element) {
+  selectors.map(
+    (selector) =>
+      (root.querySelector(selector)!.textContent = "not available."),
+  );
+}

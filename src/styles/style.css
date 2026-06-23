@@ -172,23 +172,21 @@ main {
     }
   }
 
-  metrics-stats {
+  .metrics-stats {
     grid-area: hero;
   }
 
-  cost-stats,
-  error-message {
+  .cost-stats,
+  .error-message {
     grid-area: center;
   }
 
   .deploy-stats {
     grid-area: footer;
+
+    display: flex;
+    flex-direction: row-reverse;
+
+    margin-right: 40px;
   }
-}
-
-.deploy-stats {
-  display: flex;
-  flex-direction: row-reverse;
-
-  margin-right: 40px;
 }

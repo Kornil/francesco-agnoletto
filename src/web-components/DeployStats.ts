@@ -4,7 +4,7 @@ export function initDeployStats() {
 
   const appStore = window.appStore;
   if (!appStore) {
-    setError(root, `Store not available`);
+    setError(root);
     return;
   }
 
@@ -18,12 +18,12 @@ export function initDeployStats() {
     }
 
     if (error) {
-      setError(root, error);
+      setError(root);
       return;
     }
 
     if (!stats) {
-      setError(root, `no deploy data available`);
+      setError(root);
       return;
     }
 
@@ -42,8 +42,12 @@ export function initDeployStats() {
 
 function setLoading(root: Element) {
   root.querySelector("[data-run]")!.textContent = "loading...";
+  root.querySelector("[data-duration]")!.textContent = "loading...";
+  root.querySelector("[data-commit]")!.textContent = "loading...";
 }
 
-function setError(root: Element, message: string) {
-  root.querySelector("[data-run]")!.textContent = message;
+function setError(root: Element) {
+  root.querySelector("[data-run]")!.textContent = "not available.";
+  root.querySelector("[data-run]")!.textContent = "not available.";
+  root.querySelector("[data-run]")!.textContent = "not available.";
 }
