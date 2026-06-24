@@ -48,6 +48,24 @@ body {
   margin: 0;
 }
 
+main {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 2rem;
+
+  @media (max-width: 1024px) {
+    padding: 1rem 0 0;
+  }
+}
+
 h1,
 h2 {
   font-weight: 500;
@@ -59,43 +77,36 @@ h1 {
   font-size: 36px;
   line-height: 1;
   margin: 0;
-
-  @media (max-width: 1024px) {
-    font-size: 30px;
-  }
+  margin-bottom: 1.5rem;
 }
 
 h2 {
   font-size: 24px;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+header {
+  >div {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0 40px;
   }
 }
 
-p,
-ul {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
-}
-
 section {
-  margin-bottom: 1.5rem;
+  div {
+    margin: 2rem 0;
+  }
+
+  h2 {
+    margin-left: 12px;
+  }
+
+  p {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
 
   h3 {
     margin: 0 0 0.5rem 6px;
@@ -104,6 +115,17 @@ section {
 
   h4 {
     margin: 0 0 0.5rem 40px;
+  }
+
+  .stats {
+    margin-top: 3rem;
+  }
+
+  .deploy-stats {
+    display: flex;
+    flex-direction: row-reverse;
+
+    margin-right: 40px;
   }
 }
 
@@ -132,59 +154,5 @@ button {
   &:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
-  }
-}
-
-main {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-
-  @media (max-width: 1024px) {
-    padding: 1rem 0 0;
-  }
-
-  display: grid;
-  grid-template-areas: "header"
-  "hero"
-  "center"
-  "footer";
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.5fr 1fr 1.5fr 0.5fr;
-
-  header {
-    grid-area: header;
-    grid-column: 1 / -1;
-
-    >div {
-      display: flex;
-      justify-content: space-between;
-
-      margin: 0 40px;
-    }
-  }
-
-  .metrics-stats {
-    grid-area: hero;
-  }
-
-  .cost-stats,
-  .error-message {
-    grid-area: center;
-  }
-
-  .deploy-stats {
-    grid-area: footer;
-
-    display: flex;
-    flex-direction: row-reverse;
-
-    margin-right: 40px;
   }
 }
