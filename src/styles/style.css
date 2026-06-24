@@ -63,6 +63,7 @@ main {
 
   @media (max-width: 1024px) {
     padding: 1rem 0 0;
+    border-inline: none;
   }
 }
 
