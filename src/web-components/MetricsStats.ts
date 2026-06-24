@@ -49,7 +49,7 @@ export function initMetricsStats() {
     selectors.map(
       (selector, index) =>
         (root.querySelector(selector)!.textContent =
-          `${formatMatrix[index][0]}: $${formatMatrix[index][1](stats)}`),
+          `${formatMatrix[index][0]}: ${formatMatrix[index][1](stats)}`),
     );
   };
 
